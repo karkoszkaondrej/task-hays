@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  title: Example service for Hayes recruitment company client - OpenAPI 3.0
+  description: |-
+    This is a example test for Ondrej Karkoszka. Implementation of back end service in Spring boot framework.
+    Implement:
+    - Spring Boot micro-service written in Java
+    - Build with Maven
+    - Data will be stored in embeded H2 database
+    - micro-service will be able to run locally without any other external DB (etc.) dependencies
+    - provide source code to us preferably with link publicly available on the internet or via ZIP file attached to the email
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: karkoszkaondrej@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://task.example.io/api/v1
+paths:
+  /customer/{id}:
+    get:
+      tags:
+        - customer
+      summary: Get user by name
+      description: 'Get the customer object by its id'
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: 'Customer id that needs to be fetched. Use 1 for testing.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Invalid customer id supplied
+        '404':
+          description: Customer not found
+    put:
+      tags:
+        - customer
+      summary: Update customer
+      description: Adds customer
+      operationId: updateCustomer
+      parameters:
+        - name: id
+          in: path
+          description: id that need to be found
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent customer in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - customer
+      summary: Delete customer
+      description: This can only be done by existing in customer.
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          description: The id that needs to be deleted
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+  /quotation/{id}:
+    put:
+      tags:
+        - quotation
+      summary: Update quotation
+      description: Adds quotation
+      operationId: updateQuotation
+      parameters:
+        - name: id
+          in: path
+          description: id that need to be found
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent quotation in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Quotation'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Quotation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Quotation'
+      responses:
+        default:
+          description: successful operation
+  /subscription/{id}:
+    get:
+      tags:
+        - subscription
+      summary: Get user by name
+      description: 'Get the subscription object by its id'
+      operationId: getSubscriptionById
+      parameters:
+        - name: id
+          in: path
+          description: 'Subscription id that needs to be fetched. Use 1 for testing.'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          description: Invalid subscription id supplied
+        '404':
+          description: Subscription not found
+    put:
+      tags:
+        - subscription
+      summary: Update subscription
+      description: Adds subscription
+      operationId: updateSubscription
+      parameters:
+        - name: id
+          in: path
+          description: id that need to be found
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent subscription in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        default:
+          description: successful operation
+
+
+
+  # #  POST
+  # /customer/{id}:
+  # #  GET
+  # /customer/{id}:
+  # #  PUT
+  # /customer/{id}:
+  #  DELETE
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        firstname:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        middleName:
+          type: string
+          example: Bart
+        email:
+          type: string
+          example: john@email.com
+        phoneNumber:
+          type: string
+          example: '12345'
+        birthDate:
+          type: string
+          format: date-time
+    Quotation:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        beginingOfInsurance:
+          type: string
+          format: date-time
+        insuredAmount:
+          type: integer
+          format: int64
+          example: 100000
+        dateOfSigningMortgage:
+          type: string
+          format: date-time
+        customer:
+          $ref: '#/components/schemas/Customer'
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        startDate:
+          type: string
+          format: date-time
+        validUntil:
+          type: string
+          format: date-time
+        quotation:
+          $ref: '#/components/schemas/Quotation'
+
+
+
+

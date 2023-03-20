@@ -1,0 +1,29 @@
+[
+{  
+    "id": "002",  
+    "firstName": "Alice",  
+    "lastName": "Springs",  
+    "middleName": "Madona",  
+    "email": "alice.springs@yahoo.co.in",  
+    "phoneNumber": "607789798",  
+    "birthDate": "1996/12/25"
+},
+{  
+    "id": "003",  
+    "firstName": "Steve",  
+    "lastName": "Lee",  
+    "middleName": "Yang",  
+    "email": "steve.lee@yahoo.co.in",  
+    "phoneNumber": "607159159",  
+    "birthDate": "2000/08/15"
+},
+{  
+    "id": "004",  
+    "firstName": "Melinda",  
+    "lastName": "Medows",  
+    "middleName": "Amanda",  
+    "email": "melinda.medows@yahoo.co.in",  
+    "phoneNumber": "607429429",  
+    "birthDate": "1999/09/01"
+}
+]
