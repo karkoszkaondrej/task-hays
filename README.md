@@ -46,7 +46,7 @@ Customer has business attributes:
 - [x] [Creation of Project](#creation-of-project)
 - [x] [OpenAPI Generation](#openapi-generation)
 - [x] [Run Program](#run-program)
-- [ ] [Implementation](#implementation)
+- [x] [Implementation](#implementation)
 
 ## Short REST Description
 
